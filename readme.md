@@ -1,96 +1,128 @@
 # ☁️ CloudNova – Smart Cloud Storage Manager
 
-A modern, responsive cloud storage dashboard built using HTML, CSS, and JavaScript. CloudNova provides a clean interface for managing files, organizing folders, tracking storage usage, and exploring cloud storage features.
+A modern, responsive cloud storage dashboard built using HTML, CSS, and JavaScript. CloudNova provides a clean interface for organizing files, managing folders, searching content, tracking storage usage, and switching between light and dark themes.
 
-## 🚀 Live Demo
+## 🌐 Live Demo
 
-👉 **[Open CloudNova Live Demo](https://dhilip-2007.github.io/cloudnova/)**
+**[🚀 Open CloudNova Live Demo](https://dhilip-2007.github.io/cloudnova/)**
 
-> If the demo does not open, enable GitHub Pages in your repository settings and select the `main` branch with `/ (root)` as the publishing folder.
+> If the live demo does not open, enable GitHub Pages using the deployment instructions below.
+
+## 📌 GitHub Repository
+
+**Repository:** [https://github.com/dhilip-2007/cloudnova](https://github.com/dhilip-2007/cloudnova)
 
 ## ✨ Features
 
-- 📁 **File Management** – Browse and organize file records.
-- ⬆️ **File Upload** – Select files from your computer.
-- 📊 **Storage Analytics** – View storage usage and file categories.
-- 🔍 **Smart Search** – Search files by name.
-- ⭐ **Favorites** – Star important files.
-- 🔗 **Sharing Status** – Mark files as shared in the demo.
-- 🗑️ **Trash Management** – Restore or permanently remove file records.
-- 📋 **Grid and List Views** – Choose your preferred file layout.
-- 📂 **Folder Creation** – Create folders in the workspace.
-- 🌙 **Dark and Light Themes** – Switch between themes.
-- 📱 **Responsive Design** – Use the interface on desktop and mobile.
-- 💾 **Local Storage** – Save supported metadata and preferences in your browser.
-- 🕒 **Activity History** – View recent actions.
+- 📁 File and folder management
+- ⬆️ Upload files using the file picker
+- 🔍 Search files by name
+- ⭐ Mark files as favorites
+- 🗂️ Organize files into folders
+- 🗑️ Move items to the trash
+- 📊 View storage statistics
+- 🌙 Light and dark theme
+- 📋 Grid and list views
+- ↕️ Sort files
+- 🔔 Notifications and toast messages
+- 📱 Responsive design for desktop, tablet, and mobile
+- 💾 Local browser storage for demo metadata
 
 ## 🛠️ Technologies Used
 
-| Technology | Purpose |
-|---|---|
-| HTML5 | Application structure |
-| CSS3 | Styling and responsive layout |
-| JavaScript | Interactive functionality |
-| LocalStorage | Browser-based metadata persistence |
-| Font Awesome | Icons |
+- **HTML5** – Page structure
+- **CSS3** – Styling, responsive layouts, and themes
+- **JavaScript** – Interactive features and file management
+- **LocalStorage** – Saves supported demo data in the browser
+- **Git and GitHub** – Version control and project hosting
+- **GitHub Pages** – Static website deployment
 
 ## 📂 Project Structure
 
 ```text
-cloudnova/
+cloud-Nova/
 │
 ├── index.html
 ├── style.css
 ├── script.js
-└── README.md
+└── readme.md
 ```
 
-## ⚙️ How to Run Locally
+## 🚀 Run the Project Locally
 
 1. Download or clone this repository.
-2. Open the project folder in Visual Studio Code.
-3. Install the Live Server extension if needed.
-4. Right-click `index.html`.
-5. Select **Open with Live Server**.
-6. Explore the CloudNova dashboard.
+2. Open the project folder in VS Code.
+3. Open `index.html` in your browser, or use the VS Code Live Server extension.
+4. Start exploring the CloudNova dashboard.
 
-## 🌐 Deploy on GitHub Pages
+### Clone using Git
 
-1. Create a GitHub repository named `cloudnova`.
-2. Upload `index.html`, `style.css`, `script.js`, and `README.md` to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, select **Deploy from a branch**.
-5. Choose the `main` branch and `/(root)` folder.
-6. Click **Save**.
-7. Wait for GitHub Pages to finish publishing.
+```bash
+git clone https://github.com/dhilip-2007/cloudnova.git
+cd cloudnova
+```
 
-Your live website URL should be:
+## 🌍 GitHub Pages Deployment
 
-**https://dhilip-2007.github.io/cloudnova/**
+Follow these steps to make the live demo work.
 
-## ⚠️ Important Note
+1. Open the [CloudNova repository](https://github.com/dhilip-2007/cloudnova).
+2. Click **Settings**.
+3. Select **Pages** from the left sidebar.
+4. Under **Build and deployment**, choose **Deploy from a branch**.
+5. Select branch **main**.
+6. Select folder **/ (root)**.
+7. Click **Save**.
+8. Wait a few minutes for deployment to finish.
 
-CloudNova is a frontend demonstration project, not a production cloud storage service.
+### Live Website URL
 
-- File records and preferences can be stored in browser LocalStorage.
-- The actual contents of newly uploaded files are not persisted across reloads.
-- Sharing status is simulated; files are not actually shared with other users.
-- Authentication, remote storage, and secure multi-user access require a backend and cloud storage integration.
+https://dhilip-2007.github.io/cloudnova/
 
-## 🎯 Project Objective
+### Check Deployment Status
 
-The objective of CloudNova is to demonstrate the design and implementation of a cloud-storage-style web application using fundamental web technologies. It is suitable for learning frontend development, file interface design, browser storage, and responsive dashboard development.
+Open the repository's **Actions** tab and check whether the Pages deployment has completed successfully.
+
+If the site shows a 404 error, confirm that:
+- The repository is named `cloudnova`.
+- The main page is named exactly `index.html`.
+- `index.html`, `style.css`, and `script.js` are in the repository root.
+- GitHub Pages is configured to deploy from `main` and `/(root)`.
+
+## 🔄 Update the Project
+
+After modifying your files, run these commands in PowerShell from your project folder:
+
+```powershell
+git add .
+git commit -m "Update CloudNova project"
+git push
+```
+
+## ⚠️ Project Limitations
+
+CloudNova is a **frontend demonstration project**, not a production cloud storage service.
+
+- Files are selected in the browser; actual file contents are not uploaded to a cloud server.
+- LocalStorage is browser-specific and does not synchronize files between users or devices.
+- Authentication, real cloud storage, and a backend database are not included.
+
+## 🎯 Future Enhancements
+
+- User registration and login
+- Backend API integration
+- Cloud file storage
+- Secure file sharing
+- Database integration
+- Storage plans and usage limits
+- File previews and downloads
 
 ## 👨‍💻 Author
 
 **Dhilip**
 
-GitHub: [dhilip-2007](https://github.com/dhilip-2007)
+GitHub: [@dhilip-2007](https://github.com/dhilip-2007)
 
 ## 📄 License
 
-This project is intended for educational and learning purposes. You may modify it and extend it for your own projects.
-
----
-
-⭐ If you find this project useful, consider giving the repository a star!
+This project is intended for learning and educational purposes. You may adapt it for personal and academic projects.

@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CloudNova - Smart Cloud Storage Manager">
+    <title>CloudNova | Cloud Storage Manager</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-cloud"></i>
+            </div>
+            <div class="brand-text">
+                <h2>CloudNova</h2>
+                <span>SMART STORAGE</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <p class="section-label">WORKSPACE</p>
+
+            <nav class="navigation">
+                <a href="#dashboard" class="nav-link active" data-page="dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#my-files" class="nav-link" data-page="my-files">
+                    <i class="fa-regular fa-folder-open"></i>
+                    <span>My Files</span>
+                </a>
+
+                <a href="#recent" class="nav-link" data-page="recent">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Recent Files</span>
+                </a>
+
+                <a href="#starred" class="nav-link" data-page="starred">
+                    <i class="fa-regular fa-star"></i>
+                    <span>Starred</span>
+                </a>
+
+                <a href="#shared" class="nav-link" data-page="shared">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Shared Files</span>
+                </a>
+
+                <a href="#trash" class="nav-link" data-page="trash">
+                    <i class="fa-regular fa-trash-can"></i>
+                    <span>Trash</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-section">
+            <p class="section-label">MANAGEMENT</p>
+
+            <nav class="navigation">
+                <a href="#analytics" class="nav-link" data-page="analytics">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Storage Analytics</span>
+                </a>
+
+                <a href="#activity" class="nav-link" data-page="activity">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Activity Log</span>
+                </a>
+
+                <a href="#settings" class="nav-link" data-page="settings">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Storage Widget -->
+        <div class="sidebar-storage">
+            <div class="storage-widget-heading">
+                <div class="storage-widget-icon">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+                <span>Storage Used</span>
+            </div>
+
+            <div class="storage-numbers">
+                <strong id="sidebarUsed">3.2 GB</strong>
+                <span>of 15 GB</span>
+            </div>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="sidebarProgress"
+                     style="width: 21.3%"></div>
+            </div>
+
+            <p id="storageMessage">21.3% of your storage used</p>
+
+            <button class="upgrade-button" id="upgradeButton">
+                <i class="fa-solid fa-bolt"></i>
+                Upgrade Storage
+            </button>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="support-icon">
+                <i class="fa-regular fa-circle-question"></i>
+            </div>
+            <div>
+                <strong>Need help?</strong>
+                <p>Visit our help center</p>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="icon-button menu-toggle"
+                        id="menuToggle" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <strong id="breadcrumbTitle">Dashboard</strong>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <label class="global-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search"
+                           id="globalSearch"
+                           placeholder="Search files and folders..."
+                           autocomplete="off">
+                    <kbd>⌘ K</kbd>
+                </label>
+
+                <button class="icon-button notification-button"
+                        id="notificationButton"
+                        aria-label="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <button class="theme-toggle icon-button"
+                        id="themeToggle" aria-label="Toggle theme">
+                    <i class="fa-regular fa-moon"></i>
+                </button>
+
+                <div class="profile-menu" id="profileMenu">
+                    <div class="avatar">CN</div>
+                    <div class="profile-details">
+                        <strong>Cloud Nova</strong>
+                        <span>Free Plan</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+        </header>
+
+
+        <!-- Page Content -->
+        <div class="content-wrapper" id="dashboard">
+
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+
+                <div>
+                    <p class="welcome-label">
+                        <i class="fa-solid fa-sun"></i>
+                        YOUR CLOUD WORKSPACE
+                    </p>
+
+                    <h1>Good day, <span>Cloud Explorer!</span></h1>
+
+                    <p class="welcome-description">
+                        Everything you need, organized in one secure place.
+                    </p>
+                </div>
+
+                <div class="welcome-actions">
+                    <button class="secondary-button" id="newFolderButton">
+                        <i class="fa-solid fa-folder-plus"></i>
+                        New Folder
+                    </button>
+
+                    <button class="primary-button" id="uploadButton">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        Upload Files
+                    </button>
+
+                    <input type="file" id="fileInput" multiple hidden>
+                </div>
+
+            </section>
+
+
+            <!-- Quick Statistics -->
+            <section class="stats-grid">
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon purple">
+                            <i class="fa-solid fa-folder"></i>
+                        </div>
+                        <span class="stat-tag">Workspace</span>
+                    </div>
+
+                    <p class="stat-label">Total Files</p>
+                    <h2 id="totalFiles">248</h2>
+
+                    <div class="stat-footer">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        <span>Manage your digital files</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon blue">
+                            <i class="fa-solid fa-cloud"></i>
+                        </div>
+                        <span class="stat-tag">Capacity</span>
+                    </div>
+
+                    <p class="stat-label">Storage Used</p>
+                    <h2 id="totalStorage">3.2 GB</h2>
+
+                    <div class="stat-footer">
+                        <i class="fa-solid fa-chart-simple"></i>
+                        <span>21.3% of available storage</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon green">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </div>
+                        <span class="stat-tag">Collaboration</span>
+                    </div>
+
+                    <p class="stat-label">Shared Files</p>
+                    <h2 id="sharedFiles">36</h2>
+
+                    <div class="stat-footer">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Keep work connected</span>
+                    </div>
+                </article>
+
+
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon orange">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <span class="stat-tag">This month</span>
+                    </div>
+
+                    <p class="stat-label">Uploads</p>
+                    <h2 id="totalUploads">24</h2>
+
+                    <div class="stat-footer">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span>Local demo upload activity</span>
+                    </div>
+                </article>
+
+            </section>
+
+
+            <!-- Storage and File Type Overview -->
+            <section class="overview-grid">
+
+                <article class="panel storage-overview">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Storage Overview</h2>
+                            <p>Monitor your storage consumption</p>
+                        </div>
+
+                        <button class="more-button" id="storageMoreButton"
+                                aria-label="Storage options">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+
+                    <div class="storage-overview-body">
+
+                        <div class="donut-chart" id="donutChart">
+                            <div class="donut-center">
+                                <strong id="donutPercentage">21%</strong>
+                                <span>Used</span>
+                            </div>
+                        </div>
+
+                        <div class="storage-legend">
+
+                            <div class="legend-item">
+                                <span class="legend-dot purple-dot"></span>
+                                <div class="legend-info">
+                                    <strong>Documents</strong>
+                                    <span id="documentsSize">1.2 GB</span>
+                                </div>
+                            </div>
+
+                            <div class="legend-item">
+                                <span class="legend-dot blue-dot"></span>
+                                <div class="legend-info">
+                                    <strong>Images</strong>
+                                    <span id="imagesSize">850 MB</span>
+                                </div>
+                            </div>
+
+                            <div class="legend-item">
+                                <span class="legend-dot green-dot"></span>
+                                <div class="legend-info">
+                                    <strong>Videos</strong>
+                                    <span id="videosSize">900 MB</span>
+                                </div>
+                            </div>
+
+                            <div class="legend-item">
+                                <span class="legend-dot orange-dot"></span>
+                                <div class="legend-info">
+                                    <strong>Others</strong>
+                                    <span id="othersSize">250 MB</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="storage-summary">
+                        <div>
+                            <span>Available Space</span>
+                            <strong id="availableStorage">11.8 GB</strong>
+                        </div>
+
+                        <div>
+                            <span>Total Capacity</span>
+                            <strong>15 GB</strong>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="panel quick-actions-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Quick Actions</h2>
+                            <p>Get things done faster</p>
+                        </div>
+                    </div>
+
+                    <div class="quick-actions-grid">
+
+                        <button class="quick-action" id="quickUpload">
+                            <div class="quick-action-icon purple">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <strong>Upload File</strong>
+                            <span>Add new files</span>
+                        </button>
+
+                        <button class="quick-action" id="quickFolder">
+                            <div class="quick-action-icon blue">
+                                <i class="fa-solid fa-folder-plus"></i>
+                            </div>
+                            <strong>New Folder</strong>
+                            <span>Organize files</span>
+                        </button>
+
+                        <button class="quick-action" id="quickRecent">
+                            <div class="quick-action-icon green">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            </div>
+                            <strong>Recent Files</strong>
+                            <span>Continue working</span>
+                        </button>
+
+                        <button class="quick-action" id="quickAnalytics">
+                            <div class="quick-action-icon orange">
+                                <i class="fa-solid fa-chart-column"></i>
+                            </div>
+                            <strong>Analytics</strong>
+                            <span>View storage data</span>
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- File Manager -->
+            <section class="panel files-panel" id="my-files">
+
+                <div class="panel-heading files-heading">
+
+                    <div>
+                        <h2 id="filesHeadingTitle">My Files</h2>
+                        <p>Manage and organize your cloud workspace</p>
+                    </div>
+
+                    <div class="file-view-controls">
+
+                        <button class="view-button active"
+                                id="gridViewButton"
+                                aria-label="Grid view">
+                            <i class="fa-solid fa-grip"></i>
+                        </button>
+
+                        <button class="view-button"
+                                id="listViewButton"
+                                aria-label="List view">
+                            <i class="fa-solid fa-list"></i>
+                        </button>
+
+                        <select id="sortSelect" aria-label="Sort files">
+                            <option value="name">Name</option>
+                            <option value="size">File Size</option>
+                            <option value="date">Last Modified</option>
+                            <option value="type">File Type</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- File Filters -->
+                <div class="file-filters" id="fileFilters">
+
+                    <button class="filter-button active" data-filter="all">
+                        All Files
+                    </button>
+
+                    <button class="filter-button" data-filter="document">
+                        <i class="fa-regular fa-file-lines"></i>
+                        Documents
+                    </button>
+
+                    <button class="filter-button" data-filter="image">
+                        <i class="fa-regular fa-image"></i>
+                        Images
+                    </button>
+
+                    <button class="filter-button" data-filter="video">
+                        <i class="fa-solid fa-film"></i>
+                        Videos
+                    </button>
+
+                    <button class="filter-button" data-filter="other">
+                        <i class="fa-regular fa-file"></i>
+                        Others
+                    </button>
+
+                </div>
+
+
+                <!-- File Cards Render Here -->
+                <div class="file-grid" id="fileGrid"></div>
+
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState" hidden>
+                    <div class="empty-state-icon">
+                        <i class="fa-regular fa-folder-open"></i>
+                    </div>
+
+                    <h3>No files found</h3>
+
+                    <p>Try another search or upload a new file.</p>
+
+                    <button class="primary-button" id="emptyUploadButton">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        Upload a File
+                    </button>
+                </div>
+
+
+                <!-- File Table for List View -->
+                <div class="file-table-wrapper" id="fileTableWrapper" hidden>
+
+                    <table class="file-table">
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                                <th>File Type</th>
+                                <th>Size</th>
+                                <th>Modified</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="fileTableBody"></tbody>
+                    </table>
+
+                </div>
+
+
+                <div class="files-footer">
+                    <p id="fileCountText">Showing files in your workspace</p>
+
+                    <button class="text-button" id="viewAllButton">
+                        View All Files
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </section>
+
+
+            <!-- Recent Activity -->
+            <section class="bottom-grid">
+
+                <article class="panel recent-activity-panel" id="activity">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Recent Activity</h2>
+                            <p>Your latest workspace actions</p>
+                        </div>
+
+                        <button class="text-button" id="viewActivityButton">
+                            View all
+                        </button>
+                    </div>
+
+                    <div class="activity-list" id="activityList">
+
+                        <div class="activity-item">
+                            <div class="activity-icon purple">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+
+                            <div class="activity-details">
+                                <strong>Project_Report.pdf</strong>
+                                <p>File uploaded successfully</p>
+                            </div>
+
+                            <span class="activity-time">10 min ago</span>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon blue">
+                                <i class="fa-solid fa-share-nodes"></i>
+                            </div>
+
+                            <div class="activity-details">
+                                <strong>Design_Assets.zip</strong>
+                                <p>File shared with team</p>
+                            </div>
+
+                            <span class="activity-time">1 hour ago</span>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon green">
+                                <i class="fa-solid fa-folder-plus"></i>
+                            </div>
+
+                            <div class="activity-details">
+                                <strong>College Projects</strong>
+                                <p>New folder created</p>
+                            </div>
+
+                            <span class="activity-time">Yesterday</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Favorite Files -->
+                <article class="panel favorites-panel" id="starred">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Starred Files</h2>
+                            <p>Your important files</p>
+                        </div>
+
+                        <i class="fa-regular fa-star heading-star"></i>
+                    </div>
+
+                    <div class="favorites-list" id="favoritesList">
+
+                        <div class="favorite-item">
+                            <div class="file-type-icon pdf">
+                                <i class="fa-solid fa-file-pdf"></i>
+                            </div>
+
+                            <div class="favorite-info">
+                                <strong>Project_Report.pdf</strong>
+                                <span>2.4 MB · PDF Document</span>
+                            </div>
+
+                            <button class="more-button" aria-label="More options">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </div>
+
+                        <div class="favorite-item">
+                            <div class="file-type-icon image">
+                                <i class="fa-solid fa-file-image"></i>
+                            </div>
+
+                            <div class="favorite-info">
+                                <strong>Dashboard_UI.png</strong>
+                                <span>1.8 MB · Image</span>
+                            </div>
+
+                            <button class="more-button" aria-label="More options">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </div>
+
+                        <div class="favorite-item">
+                            <div class="file-type-icon word">
+                                <i class="fa-solid fa-file-word"></i>
+                            </div>
+
+                            <div class="favorite-info">
+                                <strong>Meeting_Notes.docx</strong>
+                                <span>640 KB · Word Document</span>
+                            </div>
+
+                            <button class="more-button" aria-label="More options">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- Footer -->
+            <footer class="app-footer">
+                <p>
+                    © <span id="currentYear"></span> CloudNova.
+                    Smart storage, simplified.
+                </p>
+
+                <div class="footer-links">
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                    <a href="#help">Help Center</a>
+                </div>
+            </footer>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ================= MODAL: NEW FOLDER ================= -->
+<div class="modal-overlay" id="folderModal" hidden>
+
+    <div class="modal">
+
+        <div class="modal-heading">
+            <div class="modal-title-icon purple">
+                <i class="fa-solid fa-folder-plus"></i>
+            </div>
+
+            <button class="modal-close" data-close-modal="folderModal"
+                    aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <h2>Create New Folder</h2>
+
+        <p class="modal-description">
+            Give your new folder a name to organize your files.
+        </p>
+
+        <form id="folderForm">
+
+            <label for="folderName">Folder Name</label>
+
+            <input type="text"
+                   id="folderName"
+                   placeholder="Example: College Projects"
+                   maxlength="60"
+                   required>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-button"
+                        data-close-modal="folderModal">
+                    Cancel
+                </button>
+
+                <button type="submit" class="primary-button">
+                    <i class="fa-solid fa-folder-plus"></i>
+                    Create Folder
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MODAL: FILE DETAILS ================= -->
+<div class="modal-overlay" id="detailsModal" hidden>
+
+    <div class="modal">
+
+        <div class="modal-heading">
+            <div class="modal-title-icon blue">
+                <i class="fa-regular fa-file-lines"></i>
+            </div>
+
+            <button class="modal-close" data-close-modal="detailsModal"
+                    aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <h2 id="detailsTitle">File Details</h2>
+
+        <p class="modal-description" id="detailsDescription">
+            Information about your selected file.
+        </p>
+
+        <div class="details-list" id="detailsList"></div>
+
+        <div class="modal-actions">
+            <button type="button" class="secondary-button"
+                    data-close-modal="detailsModal">
+                Close
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MODAL: NOTIFICATIONS ================= -->
+<div class="modal-overlay" id="notificationModal" hidden>
+
+    <div class="modal">
+
+        <div class="modal-heading">
+            <div class="modal-title-icon orange">
+                <i class="fa-regular fa-bell"></i>
+            </div>
+
+            <button class="modal-close"
+                    data-close-modal="notificationModal"
+                    aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <h2>Notifications</h2>
+
+        <p class="modal-description">
+            Stay updated with your workspace activity.
+        </p>
+
+        <div class="notification-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+                <strong>Welcome to CloudNova!</strong>
+                <p>Your demo workspace is ready to explore.</p>
+            </div>
+        </div>
+
+        <div class="notification-item">
+            <i class="fa-solid fa-cloud"></i>
+            <div>
+                <strong>Storage status</strong>
+                <p>Review your available storage from the dashboard.</p>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button type="button" class="primary-button"
+                    data-close-modal="notificationModal">
+                Got it
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST NOTIFICATIONS ================= -->
+<div class="toast-container" id="toastContainer"
+     aria-live="polite" aria-atomic="true"></div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+<script src="script.js"></script>
+
+</body>
+</html>
